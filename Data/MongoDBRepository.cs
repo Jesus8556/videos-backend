@@ -10,7 +10,7 @@ namespace backend.Data
 
         public MongoDBRepository()
         {
-            client = new MongoClient("mongodb://localhost:27017");
+            client = new MongoClient("mongodb+srv://zaph:lhnnNWCOoC1jqLbQ@cluster0.awt8ftp.mongodb.net/");
             db = client.GetDatabase("Recomendacion");
 
         }

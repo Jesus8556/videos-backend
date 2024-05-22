@@ -7,13 +7,14 @@ namespace backend.Models
     public class Usuario
     {
         [BsonId]
-        public ObjectId id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)] // Esto indica que el tipo de dato del ID es ObjectId
+        public string? Id { get; set; }
 
         [BsonElement("Nombre")]
-        public string nombre { get; set; }
+        public required string nombre { get; set; }
 
         [BsonElement("Contrasena")]
-        public string contrasena { get; set; }
+        public required string contrasena { get; set; }
 
     }
 

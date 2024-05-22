@@ -28,7 +28,7 @@ namespace backend.Repositories
 
         public async Task UpdateGenero(Genero genero)
         {
-            var filtro = Builders<Genero>.Filter.Eq(s => s.id,genero.id);
+            var filtro = Builders<Genero>.Filter.Eq(s => s.Id,genero.Id);
             await _collection.ReplaceOneAsync(filtro,genero);
         }
     }

@@ -6,12 +6,16 @@ namespace backend.Models
     public class Rating
     {
         [BsonId]
-        public ObjectId id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)] // Esto indica que el tipo de dato del ID es ObjectId
+
+        public string? Id { get; set; }
 
         [BsonElement("usuarioid")]
-        public ObjectId UsuarioId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? UsuarioId { get; set; }
         [BsonElement("peliculaid")]
-        public ObjectId PeliculaId { get; set; } // Referencia a documento de Película
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? PeliculaId { get; set; } // Referencia a documento de Película
         [BsonElement("calificacion")]
         public int Calificacion { get; set; }
     }

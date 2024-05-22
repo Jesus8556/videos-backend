@@ -25,7 +25,7 @@ namespace backend.Repositories
 
         public async Task UpdateRating(Rating rating)
         {
-            var filtro = Builders<Rating>.Filter.Eq(s => s.id,rating.id);
+            var filtro = Builders<Rating>.Filter.Eq(s => s.Id,rating.Id);
             await _collection.ReplaceOneAsync(filtro,rating);
         }
     }

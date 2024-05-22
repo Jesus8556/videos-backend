@@ -27,8 +27,7 @@ namespace backend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRating(string id, [FromBody] Rating rating)
         {
-            rating.id = new MongoDB.Bson.ObjectId(id);
-
+            rating.Id = id;
             await _db.UpdateRating(rating);
             return Created("Created",true);
         } 

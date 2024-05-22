@@ -22,7 +22,7 @@ namespace backend.Controllers
         {
 
             await _db.insertPeliculas(pelicula);
-            return Created("Created", true);
+            return Created("Created", pelicula);
 
         }
     }

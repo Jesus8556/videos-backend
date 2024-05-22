@@ -21,13 +21,13 @@ namespace backend.Controllers
         public async Task<IActionResult> CreateGenero([FromBody] Genero genero)
         {
             await _db.InsertGenero(genero);
-            return Created("Created",true);
+            return CreatedAtAction(nameof(GetAllGeneros), new{id = genero.Id});
 
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGenero([FromBody] Genero genero, string id){
 
-            genero.id = new MongoDB.Bson.ObjectId(id);
+            genero.Id = id;
             await _db.UpdateGenero(genero);
             return Created("Created",true);
             
