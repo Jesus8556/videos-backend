@@ -11,9 +11,12 @@ namespace backend.Models
 
         [BsonElement("titulo")]
         public string? titulo { get; set; }
+        [BsonElement("videoUrl")]
+        public string? VideoUrl { get; set; }
 
         [BsonElement("genero")]
         [BsonRepresentation(BsonType.ObjectId)]
+
         public  List<string?>? GeneroIds { get; set; }
         
 
