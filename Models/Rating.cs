@@ -17,7 +17,7 @@ namespace backend.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? PeliculaId { get; set; } // Referencia a documento de Película
         [BsonElement("calificacion")]
-        public int Calificacion { get; set; }
+        public double Calificacion { get; set; }
     }
 
 }
