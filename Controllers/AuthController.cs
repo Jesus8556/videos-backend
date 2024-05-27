@@ -20,7 +20,10 @@ namespace backend.Controllers
                 return Conflict("El nombre de usuario ya está en uso.");
             }
 
-            return Ok("Usuario registrado exitosamente.");
+            return Ok(new{
+                Id = usuario.Id,
+                Nombre = usuario.nombre
+            });
         }
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Usuario usuario)
