@@ -19,36 +19,28 @@ namespace backend.Repositories
             _generoCollection = _repository.db.GetCollection<Genero>("Generos");
         }
 
+
         public async Task<List<PeliculaResponse>> GetPeliculas()
         {
             var peliculas = await _collection.FindAsync(new BsonDocument()).Result.ToListAsync();
-            var peliculasResponse = new List<PeliculaResponse>();
+            var generos = await _generoCollection.FindAsync(new BsonDocument()).Result.ToListAsync();
 
-            foreach (var pelicula in peliculas)
+            var generoDict = generos.ToDictionary(g => g.Id, g => new GeneroDto
             {
-                var generos = new List<GeneroDto>();
+                Id = g.Id.ToString(),
+                Nombre = g.nombre
+            });
 
-                foreach (var generoId in pelicula.GeneroIds)
-                {
-                    var genero = await _generoCollection.Find(g => g.Id == generoId).FirstOrDefaultAsync();
-                    if (genero != null)
-                    {
-                        generos.Add(new GeneroDto
-                        {
-                            Id = genero.Id.ToString(),
-                            Nombre = genero.nombre,
-                        });
-                    }
-                }
-
-                peliculasResponse.Add(new PeliculaResponse
-                {
-                    Id = pelicula.Id,
-                    Titulo = pelicula.titulo,
-                    VideoUrl = pelicula.VideoUrl,
-                    Generos = generos
-                });
-            }
+            var peliculasResponse = peliculas.Select(pelicula => new PeliculaResponse
+            {
+                Id = pelicula.Id,
+                Titulo = pelicula.titulo,
+                VideoUrl = pelicula.VideoUrl,
+                Generos = pelicula.GeneroIds
+                    .Where(id => generoDict.ContainsKey(id))
+                    .Select(id => generoDict[id])
+                    .ToList()
+            }).ToList();
 
             return peliculasResponse;
         }

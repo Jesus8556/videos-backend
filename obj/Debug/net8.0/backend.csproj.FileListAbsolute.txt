@@ -44,3 +44,5 @@
 /home/jesus811/Documentos/06-CICLO/NET-8/12-LAB/backend/obj/Debug/net8.0/backend.genruntimeconfig.cache
 /home/jesus811/Documentos/06-CICLO/NET-8/12-LAB/backend/obj/Debug/net8.0/ref/backend.dll
 /home/jesus811/Documentos/06-CICLO/NET-8/12-LAB/backend/obj/Debug/net8.0/backend.sourcelink.json
+/home/jesus811/Documentos/06-CICLO/NET-8/12-LAB/backend/bin/Debug/net8.0/Pipelines.Sockets.Unofficial.dll
+/home/jesus811/Documentos/06-CICLO/NET-8/12-LAB/backend/bin/Debug/net8.0/StackExchange.Redis.dll

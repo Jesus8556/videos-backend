@@ -17,6 +17,7 @@ namespace backend.Repositories
         public async Task<bool> Login(Usuario usuario)
         {
             var existingUser = await _collection.Find(u => u.nombre == usuario.nombre && u.contrasena == usuario.contrasena).FirstOrDefaultAsync();
+            usuario.Id = existingUser.Id;
             return existingUser != null;
         }
 
@@ -29,6 +30,7 @@ namespace backend.Repositories
             }
 
             await _collection.InsertOneAsync(usuario);
+
             return true; // Registro exitoso
 
         }

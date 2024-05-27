@@ -22,7 +22,7 @@ namespace backend.Controllers
 
             return Ok("Usuario registrado exitosamente.");
         }
-                [HttpPost("login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Usuario usuario)
         {
             bool success = await db.Login(usuario);
@@ -31,7 +31,11 @@ namespace backend.Controllers
                 return Unauthorized("Nombre de usuario o contraseña incorrectos.");
             }
 
-            return Ok("Inicio de sesión exitoso.");
+            return Ok(new
+            {
+                Id = usuario.Id,
+                Nombre = usuario.nombre
+            });
         }
     }
 }
