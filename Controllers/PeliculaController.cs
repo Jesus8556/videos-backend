@@ -25,5 +25,11 @@ namespace backend.Controllers
             return Created("Created", pelicula);
 
         }
+        [HttpGet("random/{cantidad}")]
+        public async Task<IActionResult> GetRandomMovies(int cantidad)
+        {
+            return Ok(await _db.GetRandomPeliculas(cantidad));
+        }
+
     }
 }
